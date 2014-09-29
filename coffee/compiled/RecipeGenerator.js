@@ -2,11 +2,9 @@
 var RecipeGenerator;
 
 RecipeGenerator = (function() {
-  var foo, instance;
+  var instance;
 
   instance = null;
-
-  foo = "bar";
 
   RecipeGenerator.getInstance = function() {
     return instance != null ? instance : instance = new RecipeGenerator();

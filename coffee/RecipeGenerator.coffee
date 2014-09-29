@@ -1,6 +1,5 @@
 class RecipeGenerator
 	instance = null
-	foo = "bar"
 	@getInstance: () ->
 		instance ?= new RecipeGenerator()
 	constructor: () ->
