@@ -1,0 +1,76 @@
+ul {
+
+	list-style-type : none;
+	padding-left    : 0px;
+	margin-left     : 0px;
+}
+
+li {
+	background-color : #efefef;
+	border           : 1px solid #c0c0c0;
+	padding          : 10px;
+	text-align       : center;
+}
+
+ul > li > ul {
+	display : none;
+}
+
+body.selected #configurations > li {
+	display : none;
+}
+
+body.selected #configurations li.selected {
+	display : list-item;
+}
+
+li.selected ul {
+	display : block;
+}
+
+#configurations {
+	background-color : #333333
+}
+
+#configurations > li {
+	padding-left  : 0px;
+	padding-right : 0px;
+	padding       : 0px;
+}
+
+#configurations > li > ul {
+	padding-top : 10px;
+}
+
+#configurations > li > ul > li {
+	margin-bottom : 5px;
+	border-radius : 10px;
+	text-align    : left;
+}
+
+#configurations > li > ul {
+	padding          : 10px;
+	background-color : #c0c0c0;
+}
+
+#configurations > li > h1 {
+	background-color : #333333;
+	margin           : 0px;
+	color: #efefef;
+	padding-top      : 10px;
+
+	padding-bottom   : 10px;
+}
+.before {display: none}
+.after {display: none}
+.during{display: none}
+.mixture  li{ background-color: #333; color:#fff; }
+.mixture{margin-top: 8px}
+
+h4 {padding-left: 40px;
+	line-height: 38px;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 20px;}
+.glyphicon-glass{ float:left; line-height: 38px}
+.running {background-color:red !important;}

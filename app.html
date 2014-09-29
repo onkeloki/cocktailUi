@@ -1,0 +1,29 @@
+<html>
+<script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery.alterclass.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="coffee/compiled/ConfigHelper.js"></script>
+
+<script type="text/javascript" src="coffee/compiled/FrontendHelper.js"></script>
+<script type="text/javascript" src="coffee/compiled/RecipeGenerator.js"></script>
+<script type="text/javascript" src="coffee/compiled/Service.js"></script>
+<script type="text/javascript" src="coffee/compiled/MixRemote.js"></script>
+
+<link rel="stylesheet" href="app.css"/>
+<script type="text/javascript">
+    $().ready(function () {
+
+
+        MixRemote.getInstance().loadConfigs()
+
+    });
+
+</script>
+<body class="area-index">
+<ul id="configurations"></ul>
+</body>
+</html>

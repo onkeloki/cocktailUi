@@ -1,0 +1,195 @@
+<html>
+<script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery.alterclass.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="coffee/compiled/UnsavedHelper.js"></script>
+<script type="text/javascript" src="coffee/compiled/FrontendHelper.js"></script>
+<script type="text/javascript" src="coffee/compiled/RecipeGenerator.js"></script>
+<script type="text/javascript" src="coffee/compiled/Service.js"></script>
+<script type="text/javascript" src="coffee/compiled/ConfigHelper.js"></script>
+<script type="text/javascript" src="coffee/compiled/CocktailUi.js"></script>
+<link rel="stylesheet" href="style.css"/>
+<script type="text/javascript">
+    $().ready(function () {
+        x = CocktailUi.getInstance();
+        Service.getInstance().loadConfigs();
+
+    });
+
+</script>
+<body class="area-index">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <!--  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>-->
+            <a class="navbar-brand" href="#">Cocktail UI</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <h5>Cocktail Machine Setups</h5>
+
+            <p class="menubuttons">
+                <button id="newConfig" class="btn btn-xs">Create New Setup</button>
+            </p>
+            <ul id="cocktailconfigs" class="nav nav-sidebar">
+
+
+            </ul>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 saverow">
+            <button class="btn globalsavebutton">Save</button>
+            <button class="btn globalduplicatebutton">Duplicate</button>
+            <button class="btn btn-danger globaldeletebutton pull-right">delete</button>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main main-index">
+            <div class="jumbotron">
+                <h1>Welcome to Cocktail UI</h1>
+
+                <h3>a universal Cocktailmachine control script</h3>
+                <br><br>
+                <b>1. Create setups</b>
+
+                <p><br>
+                    In this section you can create the setups required to stet mixing cocktails with your machine
+                    <br><br>
+                    First you have to push the „create new setup“ button
+                    <br><br>
+                    This will lead you to the input screen where you can name your pumps.<br>
+                    For logic reasons it is recommended to name the pumps after the liquids attached to them.
+                    <br><br>
+                    Furthermore it is here where you enter the ms your machine needs to fill up the required cl. </p>
+                </p>
+                <b>2. Create recipes based on your setups</b>
+
+                <p>
+                    <br>
+
+                    First you have to name your Cocktail.<br>
+                    Then you can add information that will show on the screen before you start mixing. For example, you
+                    might want to add some advice how to mix correctly or inform about the necessary preparation.<br>
+                    After that you can also add information that users are going to see after mixing the cocktail. For
+                    example you might want to tell them to add fruit and decors or ice to your cocktail.<br>
+                    Before you can start mixing, you have to add all the ingredients for your cocktail of course. This
+                    you will do by choosing the required pumps (which you hopefully have named after the liquids you
+                    attached to them<br>
+                    create recipe based on a configuration<br>
+                </p>
+                <b>3. Go for it</b>
+                <a href="/app.html">Open User Interface</a>
+            </div>
+        </div>
+        <!--  <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main main-createrecipe">
+              <h1>Create Recipe for: <span id="setupname"></span></h1>
+              <ul id="ingredientlist" class="col-sm-3 connectedlist">
+
+              </ul>
+
+              <ul id="theRecipe" class="col-sm-8 col-sm-offset-1 connectedlist">
+
+              </ul>
+          </div>-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main  main-createrecipe">
+
+            <h1 class="col-md-offset-2">Mix it Baby!</h1>
+            <h4 class="col-md-offset-2">choose ingredients form '<span id="setupname"></span>' and save your recipe</h4>
+
+            <form class="form-horizontal" role="form" id="recipe">
+                <div class="form-group group-uuid">
+                    <label class="col-sm-2 control-label">uuid</label>
+
+                    <div class="col-sm-10"><input name="uuid" class="form-control" type="text" placeholder="">
+                        <small class="col-sm-12 bg-info"></small>
+                    </div>
+                </div>
+                <div class="form-group group-recipename">
+                    <label class="col-sm-2 control-label">Name</label>
+
+                    <div class="col-sm-10"><input name="recipename" class="form-control" type="text" placeholder="">
+                        <small class="col-sm-12 bg-info">what's the cocktails name?</small>
+                    </div>
+                </div>
+                <div class="form-group group-beforetext">
+                    <label class="col-sm-2 control-label">Before mix text</label>
+
+                    <div class="col-sm-10"><input name="beforetext" class="form-control" type="text" placeholder="">
+                        <small class="col-sm-12 bg-info">this text will show up before mixing
+                            (e.g. instructions, preparation, advice)
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group group-aftertext">
+                    <label class="col-sm-2 control-label">After mix text</label>
+
+                    <div class="col-sm-10"><input name="aftertext" class="form-control" type="text" placeholder="">
+                        <small class="col-sm-12 bg-info">this text will show up after mixing (e.g. add fruit, serve with
+                            fish)
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group ingredientlist-group">
+                    <label class="col-sm-2 control-label">Mixture</label>
+
+                    <div class="col-sm-10">
+                        <div class="col-sm-3">
+                            <h5 class="  ">Ingredient List</h5>
+                            <ul id="ingredientlist"></ul>
+                        </div>
+
+                        <h5 class="col-sm-8 col-sm-offset-1 ">Your Recipe</h5>
+                        <ul id="theRecipe" class="col-sm-8 col-sm-offset-1 connectedlist"></ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main main-configeditor">
+
+            <h1 class="col-md-offset-2">Cocktail Machine Setup</h1>
+            <h4 class="col-md-offset-2">Use different setups to add several cocktail machines or different liquids
+                combinations</h4>
+
+            <form class="form-horizontal" role="form" id="config">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Add aravible liquids</label>
+
+                    <div class="col-sm-10">
+                        <button class="btn addPump">Add liquid</button>
+                        <small class="bg-info"
+                               style="margin-left: 110px;padding-left:15px;display: block;position: relative;top: -33;margin-bottom: -50px;">
+                            Here you can configure the liquids attached to the pumps. <br>
+                            Make sure you have only one liquid per pump. <br>
+                            It might be helpfuls to name the pump after that liquid.
+                            <br>You also need to add web calls to start and stop each of them.
+
+                        </small>
+                        <button class="btn expandpumplist">expand</button>
+                        <br><br>
+                        <ul class="pumplist"></ul>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
